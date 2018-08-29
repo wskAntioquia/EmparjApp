@@ -23,21 +23,23 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:lineSpacingExtra="18sp"
+            android:lineSpacingExtra="24sp"
             android:text="0"
             android:textColor="@android:color/background_light"
             android:textSize="20dp"
             android:textStyle="bold"
-            android:visibility="gone" />
+            android:visibility="gone"
+            app:fontFamily="@font/amiko_bold" />
 
         <Chronometer
             android:id="@+id/tiempoAsc"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:lineSpacingExtra="18sp"
+            android:lineSpacingExtra="24sp"
             android:textColor="@android:color/background_light"
             android:textStyle="bold"
+            android:typeface="serif"
             android:visibility="gone" />
 
 
