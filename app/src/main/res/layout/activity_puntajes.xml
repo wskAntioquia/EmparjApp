@@ -7,23 +7,94 @@
     android:layout_height="match_parent"
     tools:context=".activities.PuntajesActivity">
 
-    <ListView
-        android:id="@+id/listaFacil"
-      android:layout_weight="1"
-      android:layout_width="match_parent"
-      android:layout_height="0dp" />
-
-      <ListView
-          android:id="@+id/listaMedio"
-        android:layout_weight="1"
+    <ImageView
+        android:id="@+id/imageView8"
         android:layout_width="match_parent"
-        android:layout_height="0dp" />
+        android:layout_height="400dp"
+        android:layout_weight="1"
+        android:background="@drawable/puntajes_altos" />
 
-  <ListView
-      android:id="@+id/listaDificil"
-    android:layout_weight="1"
-    android:layout_width="match_parent"
-    android:layout_height="0dp" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/nombre_listafacil_1" />
+
+                <ListView
+                    android:id="@+id/listaFacil"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/fondo_listafacil" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/nombre_listamedio" />
+
+                <ListView
+                    android:id="@+id/listaMedio"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/fondo_listamedio" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView7"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/nombre_listadificil" />
+
+                <ListView
+                    android:id="@+id/listaDificil"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/fondo_listadificil" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
 
 
 </LinearLayout>
