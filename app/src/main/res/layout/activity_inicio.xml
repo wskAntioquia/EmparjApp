@@ -13,7 +13,7 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/nombres_1" />
 
     <android.support.design.widget.TextInputLayout
@@ -21,7 +21,7 @@
         android:layout_width="300dp"
         android:layout_height="80dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="22dp"
         android:background="@drawable/texto"
         android:gravity="center"
         android:paddingLeft="25dp"

@@ -28,6 +28,10 @@
         <activity android:name=".activities.JuegoMedioActivity" />
         <activity android:name=".activities.JuegoFacilActivity" />
         <activity android:name=".activities.JuegoConfiguracionActivity"></activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
