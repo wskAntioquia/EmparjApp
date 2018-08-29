@@ -13,7 +13,6 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_marginTop="8dp"
         android:src="@drawable/nombres_1" />
 
     <android.support.design.widget.TextInputLayout
