@@ -6,63 +6,85 @@
     android:layout_height="match_parent"
     tools:context=".activities.ConfiguracionActivity">
 
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:background="@drawable/configuracion_1" />
+
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="32dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/imageView4">
 
         <RadioButton
             android:id="@+id/radio_sin_tiempo"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/radios"
             android:checked="true"
             android:onClick="onClickRadios"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:text="Sin Tiempo" />
 
         <RadioButton
             android:id="@+id/radio_con_tiempo"
-            android:layout_width="123dp"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:layout_weight="1"
+            android:background="@drawable/radios"
             android:onClick="onClickRadios"
             android:text="Con Tiempo" />
     </RadioGroup>
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/inputTiempo"
-        android:visibility="invisible"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="201dp"
+        android:layout_height="80dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/texto"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup">
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/txt_tiempo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="hint" />
+            android:layout_marginTop="10dp"
+            android:hint="Tiempo de juago en milisegundos"
+            android:inputType="number" />
     </android.support.design.widget.TextInputLayout>
 
     <Button
         android:id="@+id/btn_jugar_configuracion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="71dp"
-        android:layout_marginEnd="138dp"
-        android:layout_marginRight="138dp"
-        android:text="Button"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginRight="80dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/btn_jugar"
+        android:onClick="irAJugar"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputTiempo"
+        app:layout_constraintVertical_bias="0.945" />
 </android.support.constraint.ConstraintLayout>

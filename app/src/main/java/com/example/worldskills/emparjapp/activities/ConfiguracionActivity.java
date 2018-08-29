@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import com.example.worldskills.emparjapp.R;
 
@@ -33,20 +34,36 @@ public class ConfiguracionActivity extends AppCompatActivity {
 
 
 
-        btn_jugar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //validar campo
-                if (radioConTiempo.isChecked()){
-                    guardarConfiguracion();
-                    Intent intent=new Intent(getApplicationContext(),JuegoConfiguracionActivity.class);
-                    intent.putExtra("tiempo",tiempo.getText().toString());
-                    startActivity(intent);
-                }else if (radioSinTiempo.isChecked()){
-                    startActivity(new Intent(getApplicationContext(),JuegoConfiguracionActivity.class));
+    }
+
+    public boolean validarCampoTiempo(){
+
+        if(tiempo.getText().toString().isEmpty()){
+            Toast.makeText(getApplicationContext(),"Debe dar un tiempo al juago", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        return true;
+
+    }
+
+
+    public void irAJugar(View view) {
+        if (validarCampoTiempo()){
+
+            btn_jugar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (radioConTiempo.isChecked()){
+                        guardarConfiguracion();
+                        Intent intent=new Intent(getApplicationContext(),JuegoConfiguracionActivity.class);
+                        intent.putExtra("tiempo",tiempo.getText().toString());
+                        startActivity(intent);
+                    }else if (radioSinTiempo.isChecked()){
+                        startActivity(new Intent(getApplicationContext(),JuegoConfiguracionActivity.class));
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     private void inicializarElementosUI() {
