@@ -26,7 +26,8 @@
         <activity android:name=".activities.NivelesActivity" />
         <activity android:name=".activities.JuegoDificilActivity" />
         <activity android:name=".activities.JuegoMedioActivity" />
-        <activity android:name=".activities.JuegoFacilActivity"></activity>
+        <activity android:name=".activities.JuegoFacilActivity" />
+        <activity android:name=".activities.JuegoConfiguracionActivity"></activity>
     </application>
 
 </manifest>

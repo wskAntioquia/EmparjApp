@@ -1,9 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activities.JuegoMedioActivity">
 
-</android.support.constraint.ConstraintLayout>
+
+
+    <LinearLayout
+        android:layout_weight="2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <ImageView
+            android:id="@+id/img_medio_1"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:src="@drawable/no"
+            android:onClick="imagenSeleccionada"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:id="@+id/img_medio_2"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:src="@drawable/no"
+            android:onClick="imagenSeleccionada"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:id="@+id/img_medio_3"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:src="@drawable/no"
+            android:onClick="imagenSeleccionada"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_weight="2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <ImageView
+            android:id="@+id/img_medio_4"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:src="@drawable/no"
+            android:onClick="imagenSeleccionada"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:id="@+id/img_medio_5"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:src="@drawable/no"
+            android:onClick="imagenSeleccionada"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:id="@+id/img_medio_6"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:src="@drawable/no"
+            android:onClick="imagenSeleccionada"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_weight="2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <ImageView
+            android:id="@+id/img_medio_7"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:src="@drawable/no"
+            android:onClick="imagenSeleccionada"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:id="@+id/img_medio_8"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:src="@drawable/no"
+            android:onClick="imagenSeleccionada"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:id="@+id/img_medio_9"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:src="@drawable/no"
+            android:onClick="imagenSeleccionada"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_weight="2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <ImageView
+            android:id="@+id/img_medio_10"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:src="@drawable/no"
+            android:onClick="imagenSeleccionada"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:id="@+id/img_medio_11"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:src="@drawable/no"
+            android:onClick="imagenSeleccionada"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:id="@+id/img_medio_12"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:src="@drawable/no"
+            android:onClick="imagenSeleccionada"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_weight="0.5"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <TextView
+            android:id="@+id/nombreJ1"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/puntosJ1"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:text="0"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/nombreJ2"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/puntosJ2"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:text="0"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+</LinearLayout>
