@@ -45,6 +45,7 @@ public class Constantes implements BaseColumns {
                         intent.setType("text/plain");
                         intent.setPackage("com.twitter.android");
                         activity.startActivity(intent);
+                        activity.finish();
 
 
                     }
