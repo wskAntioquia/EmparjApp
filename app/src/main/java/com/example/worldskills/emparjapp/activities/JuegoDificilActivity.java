@@ -1,15 +1,20 @@
 package com.example.worldskills.emparjapp.activities;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.worldskills.emparjapp.R;
+import com.example.worldskills.emparjapp.data.Constantes;
+import com.example.worldskills.emparjapp.data.Datos;
 import com.example.worldskills.emparjapp.models.Puntaje;
 
 import java.util.Arrays;
@@ -51,22 +56,22 @@ public class JuegoDificilActivity extends AppCompatActivity {
     }
 
     private void cargarParejas() {
-        im1=R.drawable.h_1;
-        im2=R.drawable.h_2;
-        im3=R.drawable.h_3;
-        im4=R.drawable.h_4;
-        im5=R.drawable.h_5;
-        im6=R.drawable.h_6;
-        im7=R.drawable.h_7;
-        im8 =R.drawable.h_8;
-        im9=R.drawable.h_10;
-        im10=R.drawable.h_20;
-        im11=R.drawable.h_30;
-        im12=R.drawable.h_40;
-        im13=R.drawable.h_50;
-        im14=R.drawable.h_60;
-        im15=R.drawable.h_70;
-        im16=R.drawable.h_80;
+        im1=R.drawable.s_1;
+        im2=R.drawable.s_2;
+        im3=R.drawable.s_3;
+        im4=R.drawable.s_4;
+        im5=R.drawable.s_5;
+        im6=R.drawable.s_6;
+        im7=R.drawable.s_7;
+        im8 =R.drawable.s_8;
+        im9=R.drawable.s_10;
+        im10=R.drawable.s_20;
+        im11=R.drawable.s_30;
+        im12=R.drawable.s_40;
+        im13=R.drawable.s_50;
+        im14=R.drawable.s_60;
+        im15=R.drawable.s_70;
+        im16=R.drawable.s_80;
 
     }
 
@@ -234,37 +239,37 @@ public class JuegoDificilActivity extends AppCompatActivity {
 
     private void asignarParejas(ImageView img, int tag) {
         switch (cartasArray[tag]){
-            case 11:img.setImageResource(R.drawable.h_1);
+            case 11:img.setImageResource(R.drawable.s_1);
                 break;
-            case 12:img.setImageResource(R.drawable.h_2);
+            case 12:img.setImageResource(R.drawable.s_2);
                 break;
-            case 13:img.setImageResource(R.drawable.h_3);
+            case 13:img.setImageResource(R.drawable.s_3);
                 break;
-            case 14:img.setImageResource(R.drawable.h_4);
+            case 14:img.setImageResource(R.drawable.s_4);
                 break;
-            case 15:img.setImageResource(R.drawable.h_5);
+            case 15:img.setImageResource(R.drawable.s_5);
                 break;
-            case 16:img.setImageResource(R.drawable.h_6);
+            case 16:img.setImageResource(R.drawable.s_6);
                 break;
-            case 17:img.setImageResource(R.drawable.h_7);
+            case 17:img.setImageResource(R.drawable.s_7);
                 break;
-            case 18:img.setImageResource(R.drawable.h_8);
+            case 18:img.setImageResource(R.drawable.s_8);
                 break;
-            case 21:img.setImageResource(R.drawable.h_10);
+            case 21:img.setImageResource(R.drawable.s_10);
                 break;
-            case 22:img.setImageResource(R.drawable.h_20);
+            case 22:img.setImageResource(R.drawable.s_20);
                 break;
-            case 23:img.setImageResource(R.drawable.h_30);
+            case 23:img.setImageResource(R.drawable.s_30);
                 break;
-            case 24:img.setImageResource(R.drawable.h_40);
+            case 24:img.setImageResource(R.drawable.s_40);
                 break;
-            case 25:img.setImageResource(R.drawable.h_50);
+            case 25:img.setImageResource(R.drawable.s_50);
                 break;
-            case 26:img.setImageResource(R.drawable.h_60);
+            case 26:img.setImageResource(R.drawable.s_60);
                 break;
-            case 27:img.setImageResource(R.drawable.h_70);
+            case 27:img.setImageResource(R.drawable.s_70);
                 break;
-            case 28:img.setImageResource(R.drawable.h_80);
+            case 28:img.setImageResource(R.drawable.s_80);
                 break;
         }
         if (numeroCarta==1){
@@ -381,6 +386,7 @@ public class JuegoDificilActivity extends AppCompatActivity {
                     puntosJ1=0;
                     puntosJugador_1.setText("0");
                 }
+                puntosJugador_1.setText(puntosJ1+"");
                 turno=2;
                 nombreJ1.setTextColor(Color.GRAY);
                 puntosJugador_1.setTextColor(Color.GRAY);
@@ -392,6 +398,7 @@ public class JuegoDificilActivity extends AppCompatActivity {
                     puntosJ2=0;
                     puntosJugador_2.setText("0");
                 }
+                puntosJugador_2.setText(puntosJ2+"");
                 turno=1;
                 nombreJ1.setTextColor(Color.BLACK);
                 puntosJugador_1.setTextColor(Color.BLACK);
@@ -420,6 +427,30 @@ public class JuegoDificilActivity extends AppCompatActivity {
             img14.getVisibility()==View.INVISIBLE &&
             img15.getVisibility()==View.INVISIBLE &&
             img16.getVisibility()==View.INVISIBLE ){
+
+            Datos datos=new Datos(this);
+            Puntaje puntaje =new Puntaje();
+            if (puntosJ1>puntosJ2){
+                puntaje.setNombre(nombreJ1.getText().toString());
+                puntaje.setPuntos(puntosJ1);
+                puntaje.setNivel(nivel);
+            }else {
+                puntaje.setNombre(nombreJ2.getText().toString());
+                puntaje.setPuntos(puntosJ2);
+                puntaje.setNivel(nivel);
+            }
+            if (datos.guardarDatosJuego(puntaje)){
+                Toast.makeText(this, "Guardo", Toast.LENGTH_SHORT).show();
+            }else {
+                Toast.makeText(this, "No Guardo", Toast.LENGTH_SHORT).show();
+            }
+
+            String message=nombreJ1.getText().toString() + ":" +puntosJ1+ "\n"+
+                            nombreJ2.getText().toString() + ":"+puntosJ2 ;
+
+            Constantes.dialogResultados(JuegoDificilActivity.this,message);
+
+
 
         }
     }
