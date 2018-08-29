@@ -18,7 +18,7 @@ public class ConfiguracionActivity extends AppCompatActivity {
     private TextInputEditText tiempo;
     private TextInputLayout inputLayoutTiempo;
     private SharedPreferences preferences;
-    private RadioButton radioConTiempo,RadioSinTiempo;
+    private RadioButton radioConTiempo,radioSinTiempo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +42,8 @@ public class ConfiguracionActivity extends AppCompatActivity {
                     Intent intent=new Intent(getApplicationContext(),JuegoConfiguracionActivity.class);
                     intent.putExtra("tiempo",tiempo.getText().toString());
                     startActivity(intent);
+                }else if (radioSinTiempo.isChecked()){
+                    startActivity(new Intent(getApplicationContext(),JuegoConfiguracionActivity.class));
                 }
             }
         });
@@ -52,7 +54,7 @@ public class ConfiguracionActivity extends AppCompatActivity {
         btn_jugar=findViewById(R.id.btn_jugar_configuracion);
         tiempo=findViewById(R.id.txt_tiempo);
         radioConTiempo=findViewById(R.id.radio_con_tiempo);
-        RadioSinTiempo=findViewById(R.id.radio_sin_tiempo);
+        radioSinTiempo=findViewById(R.id.radio_sin_tiempo);
     }
 
     private void recuperarConfiguracion() {

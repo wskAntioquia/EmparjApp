@@ -2,10 +2,12 @@ package com.example.worldskills.emparjapp.activities;
 
 import android.graphics.Color;
 import android.media.MediaPlayer;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,14 +22,19 @@ import java.util.Collections;
 import java.util.Random;
 
 public class JuegoConfiguracionActivity extends AppCompatActivity {
-    private TextView nombreJ1,nombreJ2,puntosJugador_1,puntosJugador_2;
+    private TextView nombreJ1,nombreJ2,puntosJugador_1,puntosJugador_2,tiempo;
     private ImageView img1,img2,img3,img4,img5,img6,img7,img8,img9,img10,img11,img12,img13,img14,img15,img16;
     private Integer cartasArray[]={11,12,13,14,15,16,17,18,21,22,23,24,25,26,27,28};
     private int im1,im2,im3,im4,im5,im6,im7,im8,im9,im10,im11,im12,im13,im14,im15,im16;
     private Random random=new Random();
     private MediaPlayer player;
     private int primeraSeleccion,segundaSeleccion,primeraCarta,segundaCarta,numeroCarta=1,puntosJ1=0,puntosJ2=0,turno;
-    private String nivel="configuracion";
+    private String nivel="configuracion",tiempoIntent,message;
+    private CountDownTimer downTimer;
+    private Bundle bundle;
+    private long tiempoJuegoDesc,mil=1000;
+    private Chronometer tiempoAsc;
+    private boolean timeOrNotTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,20 +44,71 @@ public class JuegoConfiguracionActivity extends AppCompatActivity {
         barajarCartas();
         asignarEtiquetas();
         cargarParejas();
-        int turnoAzar=random.nextInt(2);
-        if (turnoAzar==1){
-            turno=1;
-            nombreJ1.setTextColor(Color.BLACK);
-            puntosJugador_1.setTextColor(Color.BLACK);
-            nombreJ2.setTextColor(Color.GRAY);
-            puntosJugador_2.setTextColor(Color.GRAY);
+        bundle=getIntent().getExtras();
+        if (bundle!=null){
+            timeOrNotTime=true;
+            tiempo.setVisibility(View.VISIBLE);
+            iniciarTiempo(bundle);
         }else {
-            turno=2;
-            nombreJ1.setTextColor(Color.GRAY);
-            puntosJugador_1.setTextColor(Color.GRAY);
-            nombreJ2.setTextColor(Color.BLACK);
-            puntosJugador_2.setTextColor(Color.BLACK);
+            timeOrNotTime=false;
+            tiempoAsc.setVisibility(View.VISIBLE);
+            tiempoAsc.start();
         }
+
+    }
+
+    private void iniciarTiempo(Bundle bundle) {
+        tiempoIntent=bundle.getString("tiempo");
+        tiempoJuegoDesc=Long.parseLong(tiempoIntent);
+        downTimer=new CountDownTimer(tiempoJuegoDesc,mil) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                tiempo.setText((int) (millisUntilFinished/mil)+"");
+            }
+
+            @Override
+            public void onFinish() {
+                tiempo.setText("0");
+                resultadosJuego();
+            }
+        }.start();
+    }
+
+    private void resultadosJuego() {
+        Datos datos=new Datos(JuegoConfiguracionActivity.this);
+        Puntaje puntaje =new Puntaje();
+        if (timeOrNotTime){
+            downTimer.cancel();
+             message=nombreJ1.getText().toString() + ":" +puntosJ1+ "\n"+
+                    nombreJ2.getText().toString() + ":"+puntosJ2 +"\n"+
+                    "Tiempo :"+ tiempo.getText().toString();
+        }else {
+            tiempoAsc.stop();
+            message=nombreJ1.getText().toString() + ":" +puntosJ1+ "\n"+
+                    nombreJ2.getText().toString() + ":"+puntosJ2 +"\n"+
+                    "Tiempo :"+ tiempoAsc.getText().toString();
+        }
+
+        if (puntosJ1>puntosJ2){
+            puntaje.setNombre(nombreJ1.getText().toString());
+            puntaje.setPuntos(puntosJ1);
+            puntaje.setNivel(nivel);
+        }else {
+            puntaje.setNombre(nombreJ2.getText().toString());
+            puntaje.setPuntos(puntosJ2);
+            puntaje.setNivel(nivel);
+        }
+        if (datos.guardarDatosJuego(puntaje)){
+            Toast.makeText(getApplicationContext(), "Guardo", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(getApplicationContext(), "No Guardo", Toast.LENGTH_SHORT).show();
+        }
+
+
+
+
+
+        Constantes.dialogResultados(JuegoConfiguracionActivity.this,message);
     }
 
     private void cargarParejas() {
@@ -103,26 +161,41 @@ public class JuegoConfiguracionActivity extends AppCompatActivity {
         nombreJ2.setText(Puntaje.nomJ2);
         puntosJugador_1=findViewById(R.id.puntosJ1);
         puntosJugador_2=findViewById(R.id.puntosJ2);
+        tiempo=findViewById(R.id.tiempoDesc);
+        tiempoAsc=findViewById(R.id.tiempoAsc);
 
-        img1=findViewById(R.id.img_dificil_1);
-        img2=findViewById(R.id.img_dificil_2);
-        img3=findViewById(R.id.img_dificil_3);
-        img4=findViewById(R.id.img_dificil_4);
-        img5=findViewById(R.id.img_dificil_5);
-        img6=findViewById(R.id.img_dificil_6);
-        img7=findViewById(R.id.img_dificil_7);
-        img8=findViewById(R.id.img_dificil_8);
-        img9=findViewById(R.id.img_dificil_9);
-        img10=findViewById(R.id.img_dificil_10);
-        img11=findViewById(R.id.img_dificil_11);
-        img12=findViewById(R.id.img_dificil_12);
-        img13=findViewById(R.id.img_dificil_13);
-        img14=findViewById(R.id.img_dificil_14);
-        img15=findViewById(R.id.img_dificil_15);
-        img16=findViewById(R.id.img_dificil_16);
+        img1=findViewById(R.id.img_configuracion_1);
+        img2=findViewById(R.id.img_configuracion_2);
+        img3=findViewById(R.id.img_configuracion_3);
+        img4=findViewById(R.id.img_configuracion_4);
+        img5=findViewById(R.id.img_configuracion_5);
+        img6=findViewById(R.id.img_configuracion_6);
+        img7=findViewById(R.id.img_configuracion_7);
+        img8=findViewById(R.id.img_configuracion_8);
+        img9=findViewById(R.id.img_configuracion_9);
+        img10=findViewById(R.id.img_configuracion_10);
+        img11=findViewById(R.id.img_configuracion_11);
+        img12=findViewById(R.id.img_configuracion_12);
+        img13=findViewById(R.id.img_configuracion_13);
+        img14=findViewById(R.id.img_configuracion_14);
+        img15=findViewById(R.id.img_configuracion_15);
+        img16=findViewById(R.id.img_configuracion_16);
+
+        int turnoAzar=random.nextInt(2);
+        if (turnoAzar==1){
+            turno=1;
+            nombreJ1.setTextColor(Color.BLACK);
+            puntosJugador_1.setTextColor(Color.BLACK);
+            nombreJ2.setTextColor(Color.GRAY);
+            puntosJugador_2.setTextColor(Color.GRAY);
+        }else {
+            turno=2;
+            nombreJ1.setTextColor(Color.GRAY);
+            puntosJugador_1.setTextColor(Color.GRAY);
+            nombreJ2.setTextColor(Color.BLACK);
+            puntosJugador_2.setTextColor(Color.BLACK);
+        }
     }
-
-
 
     private void habilitarCartas(){
         img1.setEnabled(true);
@@ -180,7 +253,6 @@ public class JuegoConfiguracionActivity extends AppCompatActivity {
         img15.setImageResource(R.drawable.no);
         img16.setImageResource(R.drawable.no);
     }
-
 
     public void imagenSeleccionada(View view) {
         int tag=Integer.parseInt((String) view.getTag());
@@ -410,44 +482,23 @@ public class JuegoConfiguracionActivity extends AppCompatActivity {
 
     private void verificarUltimaCarta() {
         if (img1.getVisibility()==View.INVISIBLE &&
-                img2.getVisibility()==View.INVISIBLE &&
-                img3.getVisibility()==View.INVISIBLE &&
-                img4.getVisibility()==View.INVISIBLE &&
-                img5.getVisibility()==View.INVISIBLE &&
-                img6.getVisibility()==View.INVISIBLE &&
-                img7.getVisibility()==View.INVISIBLE &&
-                img8.getVisibility()==View.INVISIBLE &&
-                img9.getVisibility()==View.INVISIBLE &&
-                img10.getVisibility()==View.INVISIBLE &&
-                img11.getVisibility()==View.INVISIBLE &&
-                img12.getVisibility()==View.INVISIBLE &&
-                img13.getVisibility()==View.INVISIBLE &&
-                img14.getVisibility()==View.INVISIBLE &&
-                img15.getVisibility()==View.INVISIBLE &&
-                img16.getVisibility()==View.INVISIBLE ){
+            img2.getVisibility()==View.INVISIBLE &&
+            img3.getVisibility()==View.INVISIBLE &&
+            img4.getVisibility()==View.INVISIBLE &&
+            img5.getVisibility()==View.INVISIBLE &&
+            img6.getVisibility()==View.INVISIBLE &&
+            img7.getVisibility()==View.INVISIBLE &&
+            img8.getVisibility()==View.INVISIBLE &&
+            img9.getVisibility()==View.INVISIBLE &&
+            img10.getVisibility()==View.INVISIBLE &&
+            img11.getVisibility()==View.INVISIBLE &&
+            img12.getVisibility()==View.INVISIBLE &&
+            img13.getVisibility()==View.INVISIBLE &&
+            img14.getVisibility()==View.INVISIBLE &&
+            img15.getVisibility()==View.INVISIBLE &&
+            img16.getVisibility()==View.INVISIBLE ){
 
-            Datos datos=new Datos(this);
-            Puntaje puntaje =new Puntaje();
-            if (puntosJ1>puntosJ2){
-                puntaje.setNombre(nombreJ1.getText().toString());
-                puntaje.setPuntos(puntosJ1);
-                puntaje.setNivel(nivel);
-            }else {
-                puntaje.setNombre(nombreJ2.getText().toString());
-                puntaje.setPuntos(puntosJ2);
-                puntaje.setNivel(nivel);
-            }
-            if (datos.guardarDatosJuego(puntaje)){
-                Toast.makeText(this, "Guardo", Toast.LENGTH_SHORT).show();
-            }else {
-                Toast.makeText(this, "No Guardo", Toast.LENGTH_SHORT).show();
-            }
-
-            String message=nombreJ1.getText().toString() + ":" +puntosJ1+ "\n"+
-                    nombreJ2.getText().toString() + ":"+puntosJ2 ;
-
-            Constantes.dialogResultados(JuegoConfiguracionActivity.this,message);
-
+            resultadosJuego();
 
 
         }
