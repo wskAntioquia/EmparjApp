@@ -19,21 +19,23 @@
         <RadioButton
             android:id="@+id/radio_sin_tiempo"
             android:checked="true"
+            android:onClick="onClickRadios"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="RadioButton" />
+            android:text="Sin Tiempo" />
 
         <RadioButton
             android:id="@+id/radio_con_tiempo"
-            android:layout_width="wrap_content"
+            android:layout_width="123dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="RadioButton" />
+            android:onClick="onClickRadios"
+            android:text="Con Tiempo" />
     </RadioGroup>
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/textInputLayout3"
+        android:id="@+id/inputTiempo"
         android:visibility="invisible"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
