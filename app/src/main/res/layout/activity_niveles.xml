@@ -6,4 +6,34 @@
     android:layout_height="match_parent"
     tools:context=".activities.NivelesActivity">
 
+    <Button
+        android:id="@+id/btn_juego_facil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="109dp"
+        android:onClick="jugar"
+        android:text="facil"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_juego_medio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="54dp"
+        android:onClick="jugar"
+        android:text="medio"
+        app:layout_constraintStart_toStartOf="@+id/btn_juego_facil"
+        app:layout_constraintTop_toBottomOf="@+id/btn_juego_facil" />
+
+    <Button
+        android:id="@+id/btn_juego_dificil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:onClick="jugar"
+        android:text="dificil"
+        app:layout_constraintStart_toStartOf="@+id/btn_juego_medio"
+        app:layout_constraintTop_toBottomOf="@+id/btn_juego_medio" />
 </android.support.constraint.ConstraintLayout>

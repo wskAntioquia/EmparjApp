@@ -6,6 +6,8 @@ public class Puntaje {
     private String nivel;
     private String tiempo;
 
+    public static String nomJ1="",nomJ2="";
+
     public Puntaje() {
     }
 

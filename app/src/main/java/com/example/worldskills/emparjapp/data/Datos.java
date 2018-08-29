@@ -12,6 +12,7 @@ public class Datos extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        String SQL_QUERY="CREATE TABLE ";
 
     }
 

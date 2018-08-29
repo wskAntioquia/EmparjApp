@@ -6,4 +6,35 @@
     android:layout_height="match_parent"
     tools:context=".activities.MenuActivity">
 
+    <Button
+        android:id="@+id/btn_jugar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="39dp"
+        android:text="Jugar"
+        android:onClick="siguienteActivity"
+        app:layout_constraintBottom_toTopOf="@+id/btn_puntajes"
+        app:layout_constraintStart_toStartOf="@+id/btn_puntajes" />
+
+    <Button
+        android:id="@+id/btn_puntajes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="38dp"
+        android:text="puntajes"
+        android:onClick="siguienteActivity"
+        app:layout_constraintBottom_toTopOf="@+id/btn_configuracion"
+        app:layout_constraintStart_toStartOf="@+id/btn_configuracion" />
+
+    <Button
+        android:id="@+id/btn_configuracion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="159dp"
+        android:layout_marginEnd="103dp"
+        android:layout_marginRight="103dp"
+        android:text="configuracion"
+        android:onClick="siguienteActivity"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </android.support.constraint.ConstraintLayout>
