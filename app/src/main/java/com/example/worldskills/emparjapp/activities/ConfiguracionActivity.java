@@ -29,42 +29,36 @@ public class ConfiguracionActivity extends AppCompatActivity {
         inicializarElementosUI();
         preferences=getSharedPreferences("tiempoJuego",MODE_PRIVATE);
         recuperarConfiguracion();
-
-
-
-
-
     }
 
     public boolean validarCampoTiempo(){
-
         if(tiempo.getText().toString().isEmpty()){
             Toast.makeText(getApplicationContext(),"Debe dar un tiempo al juago", Toast.LENGTH_LONG).show();
             return false;
         }
-        return true;
+            return true;
 
     }
 
 
     public void irAJugar(View view) {
         if (validarCampoTiempo()){
-
             btn_jugar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (radioConTiempo.isChecked()){
-                        guardarConfiguracion();
-                        Intent intent=new Intent(getApplicationContext(),JuegoConfiguracionActivity.class);
-                        intent.putExtra("tiempo",tiempo.getText().toString());
-                        startActivity(intent);
-                    }else if (radioSinTiempo.isChecked()){
-                        startActivity(new Intent(getApplicationContext(),JuegoConfiguracionActivity.class));
-                    }
+                if (radioConTiempo.isChecked()){
+                    guardarConfiguracion();
+                    Intent intent=new Intent(getApplicationContext(),JuegoConfiguracionActivity.class);
+                    intent.putExtra("tiempo",tiempo.getText().toString());
+                    startActivity(intent);
+                }else if (radioSinTiempo.isChecked()){
+                    startActivity(new Intent(getApplicationContext(),JuegoConfiguracionActivity.class));
+                }
                 }
             });
         }
     }
+    //inicializamos los elementos de la interfaz grafica
 
     private void inicializarElementosUI() {
         inputLayoutTiempo=findViewById(R.id.inputTiempo);
@@ -73,20 +67,20 @@ public class ConfiguracionActivity extends AppCompatActivity {
         radioConTiempo=findViewById(R.id.radio_con_tiempo);
         radioSinTiempo=findViewById(R.id.radio_sin_tiempo);
     }
-
+    //carga los datos guardados en los SharedPreferences
     private void recuperarConfiguracion() {
         String time =preferences.getString("tiempo",null);
         if (time!=null){
             tiempo.setText(time);
         }
     }
-
+    //guarda los datos guardados en los SharedPreferences
     private void guardarConfiguracion() {
         SharedPreferences.Editor editor=preferences.edit();
         editor.putString("tiempo",tiempo.getText().toString());
         editor.apply();
     }
-
+    //verifica que radioButton esta precionado para mostra o ocultar el campo de texto del tiempo
     public void onClickRadios(View view) {
         switch (view.getId()){
             case R.id.radio_con_tiempo:

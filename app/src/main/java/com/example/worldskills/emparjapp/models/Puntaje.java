@@ -11,13 +11,6 @@ public class Puntaje {
     public Puntaje() {
     }
 
-    public Puntaje(String nombre, int puntos, String nivel, String tiempo) {
-        this.nombre = nombre;
-        this.puntos = puntos;
-        this.nivel = nivel;
-        this.tiempo = tiempo;
-    }
-
     public String getNombre() {
         return nombre;
     }

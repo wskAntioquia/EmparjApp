@@ -31,7 +31,7 @@ public class InicioActivity extends AppCompatActivity {
         return true;
     }
 
-    //que sucede si preciono el boton de segui
+    //que sucede si preciono el boton de seguir
     public void seguir(View view) {
         if (validarCampos()){
 
@@ -48,7 +48,7 @@ public class InicioActivity extends AppCompatActivity {
     }
 
 
-    //inicializamos lis elementos de la interfaz grafica
+    //inicializamos los elementos de la interfaz grafica
     private void inicializar() {
         nombreJ1=findViewById(R.id.nomJ1);
         nombreJ2=findViewById(R.id.nomJ2);

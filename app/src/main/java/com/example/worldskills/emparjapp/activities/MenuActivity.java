@@ -14,7 +14,7 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
     }
-
+    //
     public void siguienteActivity(View view) {
         switch (view.getId()){
             case R.id.btn_jugar:

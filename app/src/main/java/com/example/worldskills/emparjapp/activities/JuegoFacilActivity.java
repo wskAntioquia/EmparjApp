@@ -66,6 +66,7 @@ public class JuegoFacilActivity extends AppCompatActivity {
 
     }
 
+    //asigna un tag a cada imagen del juego
     private void asignarEtiquetas() {
         img1.setTag("0");
         img2.setTag("1");
@@ -76,11 +77,11 @@ public class JuegoFacilActivity extends AppCompatActivity {
         img7.setTag("6");
         img8.setTag("7");
     }
-
+    //baraja todas las cartas del juego para que siempre queden de forma aleatorea
     private void barajarCartas() {
         Collections.shuffle(Arrays.asList(cartasArray));
     }
-
+    //inicializa todos los elementos de la interfaz frafica
     private void inicializarElementosUI() {
         nombreJ1=findViewById(R.id.nombreJ1);
         nombreJ2=findViewById(R.id.nombreJ2);
@@ -100,8 +101,6 @@ public class JuegoFacilActivity extends AppCompatActivity {
 
 
     }
-
-
 
     private void habilitarCartas(){
         img1.setEnabled(true);
@@ -124,7 +123,7 @@ public class JuegoFacilActivity extends AppCompatActivity {
         img7.setEnabled(false);
         img8.setEnabled(false);
     }
-
+    //envia la imagen "no.png" a todos los imageview de la interfaz grafica
     private void voltearCartas(){
         img1.setImageResource(R.drawable.no);
         img2.setImageResource(R.drawable.no);
@@ -135,8 +134,7 @@ public class JuegoFacilActivity extends AppCompatActivity {
         img7.setImageResource(R.drawable.no);
         img8.setImageResource(R.drawable.no);
     }
-
-
+    //captura el onClick de todas las imagens de la interfaz grafica
     public void imagenSeleccionada(View view) {
         int tag=Integer.parseInt((String) view.getTag());
         if (view.getId()==img1.getId()){
@@ -293,7 +291,8 @@ public class JuegoFacilActivity extends AppCompatActivity {
         verificarUltimaCarta();
         habilitarCartas();
     }
-
+    /*valida la  visivilidad de todas las imagenes del juego,
+     muestra los resultados del juego y gurada la informacion en la base de datos SQLite*/
     private void verificarUltimaCarta() {
         if (img1.getVisibility()==View.INVISIBLE &&
                 img2.getVisibility()==View.INVISIBLE &&

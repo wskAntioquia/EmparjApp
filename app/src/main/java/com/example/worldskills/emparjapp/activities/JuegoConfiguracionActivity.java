@@ -149,11 +149,11 @@ public class JuegoConfiguracionActivity extends AppCompatActivity {
         img15.setTag("14");
         img16.setTag("15");
     }
-
+    //baraja todas las cartas del juego para que siempre queden de forma aleatorea
     private void barajarCartas() {
         Collections.shuffle(Arrays.asList(cartasArray));
     }
-
+    //inicializa todos los elementos de la interfaz frafica
     private void inicializarElementosUI() {
         nombreJ1=findViewById(R.id.nombreJ1);
         nombreJ2=findViewById(R.id.nombreJ2);
@@ -234,7 +234,7 @@ public class JuegoConfiguracionActivity extends AppCompatActivity {
         img15.setEnabled(false);
         img16.setEnabled(false);
     }
-
+    //envia la imagen "no.png" a todos los imageview de la interfaz grafica
     private void voltearCartas(){
         img1.setImageResource(R.drawable.no);
         img2.setImageResource(R.drawable.no);
@@ -254,6 +254,7 @@ public class JuegoConfiguracionActivity extends AppCompatActivity {
         img16.setImageResource(R.drawable.no);
     }
 
+    //captura el onClick de todas las imagens de la interfaz grafica
     public void imagenSeleccionada(View view) {
         int tag=Integer.parseInt((String) view.getTag());
         if (view.getId()==img1.getId()){
@@ -479,7 +480,8 @@ public class JuegoConfiguracionActivity extends AppCompatActivity {
         verificarUltimaCarta();
         habilitarCartas();
     }
-
+    /*valida la  visivilidad de todas las imagenes del juego,
+     muestra los resultados del juego y gurada la informacion en la base de datos SQLite*/
     private void verificarUltimaCarta() {
         if (img1.getVisibility()==View.INVISIBLE &&
             img2.getVisibility()==View.INVISIBLE &&
