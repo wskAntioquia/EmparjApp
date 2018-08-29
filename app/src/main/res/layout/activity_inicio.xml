@@ -12,8 +12,9 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:src="@drawable/nombres_1" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/nombres_1" />
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/textInputLayout"
