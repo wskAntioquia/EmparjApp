@@ -33,7 +33,7 @@ public class ConfiguracionActivity extends AppCompatActivity {
 
     public boolean validarCampoTiempo(){
         if(tiempo.getText().toString().isEmpty()){
-            Toast.makeText(getApplicationContext(),"Debe dar un tiempo al juago", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"Debe dar un tiempo al juego", Toast.LENGTH_LONG).show();
             return false;
         }
             return true;
@@ -42,21 +42,24 @@ public class ConfiguracionActivity extends AppCompatActivity {
 
 
     public void irAJugar(View view) {
-        if (validarCampoTiempo()){
             btn_jugar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                 if (radioConTiempo.isChecked()){
-                    guardarConfiguracion();
-                    Intent intent=new Intent(getApplicationContext(),JuegoConfiguracionActivity.class);
-                    intent.putExtra("tiempo",tiempo.getText().toString());
-                    startActivity(intent);
+                    if(validarCampoTiempo()) {
+                        guardarConfiguracion();
+                        Intent intent = new Intent(getApplicationContext(), JuegoConfiguracionActivity.class);
+                        intent.putExtra("tiempo", tiempo.getText().toString());
+                        startActivity(intent);
+                    }
                 }else if (radioSinTiempo.isChecked()){
-                    startActivity(new Intent(getApplicationContext(),JuegoConfiguracionActivity.class));
+
+                        startActivity(new Intent(getApplicationContext(),JuegoConfiguracionActivity.class));
+
                 }
                 }
             });
-        }
+
     }
     //inicializamos los elementos de la interfaz grafica
 
