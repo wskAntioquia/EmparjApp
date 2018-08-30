@@ -63,7 +63,7 @@ public class JuegoConfiguracionActivity extends AppCompatActivity {
         downTimer=new CountDownTimer(tiempoJuegoDesc,mil) {
             @Override
             public void onTick(long millisUntilFinished) {
-                tiempo.setText((int) (millisUntilFinished/mil)+"");
+                tiempo.setText((int) (millisUntilFinished/mil)+"''");
             }
 
             @Override
@@ -98,16 +98,7 @@ public class JuegoConfiguracionActivity extends AppCompatActivity {
             puntaje.setPuntos(puntosJ2);
             puntaje.setNivel(nivel);
         }
-        if (datos.guardarDatosJuego(puntaje)){
-            Toast.makeText(getApplicationContext(), "Guardo", Toast.LENGTH_SHORT).show();
-        }else {
-            Toast.makeText(getApplicationContext(), "No Guardo", Toast.LENGTH_SHORT).show();
-        }
-
-
-
-
-
+         datos.guardarDatosJuego(puntaje);
         Constantes.dialogResultados(JuegoConfiguracionActivity.this,message);
     }
 

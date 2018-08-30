@@ -314,12 +314,7 @@ public class JuegoFacilActivity extends AppCompatActivity {
                 puntaje.setPuntos(puntosJ2);
                 puntaje.setNivel(nivel);
             }
-            if (datos.guardarDatosJuego(puntaje)){
-                Toast.makeText(this, "Guardo", Toast.LENGTH_SHORT).show();
-            }else {
-                Toast.makeText(this, "No Guardo", Toast.LENGTH_SHORT).show();
-            }
-
+             datos.guardarDatosJuego(puntaje);
             String message=nombreJ1.getText().toString() + ":" +puntosJ1+ "\n"+
                     nombreJ2.getText().toString() + ":"+puntosJ2 ;
 

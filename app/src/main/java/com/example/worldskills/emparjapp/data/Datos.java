@@ -27,14 +27,14 @@ public class Datos extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean guardarDatosJuego(Puntaje puntaje){
+    public void guardarDatosJuego(Puntaje puntaje){
         bd=getWritableDatabase();
         ContentValues values=new ContentValues();
         values.put(Constantes.CAMPO_NOMBRE,puntaje.getNombre());
         values.put(Constantes.CAMPO_PUNTOS,puntaje.getPuntos());
         values.put(Constantes.CAMPO_NIVEL,puntaje.getNivel());
         values.put(Constantes.CAMPO_TIEMPO,puntaje.getTiempo());
-        return bd.insert(Constantes.TBL_PUNTAJES,null,values)>0;
+         bd.insert(Constantes.TBL_PUNTAJES,null,values);
     }
 
     public Cursor listarJuegoFacil(){

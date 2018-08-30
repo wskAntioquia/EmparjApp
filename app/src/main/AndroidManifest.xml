@@ -11,23 +11,34 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".activities.SplashActivity"
-            android:theme="@style/Splash">
+            android:theme="@style/Splash"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.InicioActivity" />
-        <activity android:name=".activities.MenuActivity" />
-        <activity android:name=".activities.JugarActivity" />
-        <activity android:name=".activities.ConfiguracionActivity" />
-        <activity android:name=".activities.PuntajesActivity" />
-        <activity android:name=".activities.NivelesActivity" />
-        <activity android:name=".activities.JuegoDificilActivity" />
-        <activity android:name=".activities.JuegoMedioActivity" />
-        <activity android:name=".activities.JuegoFacilActivity" />
-        <activity android:name=".activities.JuegoConfiguracionActivity"></activity>
+        <activity android:name=".activities.InicioActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.MenuActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.JugarActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.ConfiguracionActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.PuntajesActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.NivelesActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.JuegoDificilActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.JuegoMedioActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.JuegoFacilActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.JuegoConfiguracionActivity"
+            android:screenOrientation="portrait"/>
 
         <meta-data
             android:name="preloaded_fonts"
