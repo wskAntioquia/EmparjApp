@@ -124,8 +124,6 @@ public class JuegoDificilActivity extends AppCompatActivity {
          img16=findViewById(R.id.img_dificil_16);
     }
 
-
-
     private void habilitarCartas(){
         img1.setEnabled(true);
         img2.setEnabled(true);

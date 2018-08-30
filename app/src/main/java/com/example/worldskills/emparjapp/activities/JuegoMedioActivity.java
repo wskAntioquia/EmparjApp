@@ -114,8 +114,6 @@ public class JuegoMedioActivity extends AppCompatActivity {
 
     }
 
-
-
     private void habilitarCartas(){
         img1.setEnabled(true);
         img2.setEnabled(true);
